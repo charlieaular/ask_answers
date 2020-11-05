@@ -9,7 +9,7 @@ class GetAsksUseCase extends UseCase<List<AskAnswerEntity>, NoParams> {
   GetAsksUseCase(this.askRepository);
 
   @override
-  Future<Either<Failure, List<AskAnswerEntity>>> call(NoParams) async {
+  Future<Either<Failure, List<AskAnswerEntity>>> call(NoParams noParams) async {
     return await askRepository.getAsks();
   }
 }

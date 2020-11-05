@@ -3,9 +3,7 @@ import 'package:meta/meta.dart' show required;
 
 class AskAnswerModel extends AskAnswerEntity {
   AskAnswerModel(
-      {@required int id,
-      @required String name,
-      @required List<AnswerModel> answers})
+      {int id, @required String name, @required List<AnswerModel> answers})
       : super(answers: answers, id: id, name: name);
 
   factory AskAnswerModel.fromJson(json) {
@@ -20,10 +18,7 @@ class AskAnswerModel extends AskAnswerEntity {
 
 class AnswerModel extends AnswerEntity {
   AnswerModel(
-      {@required int id,
-      @required String name,
-      @required int idAsk,
-      @required bool correct})
+      {int id, @required String name, int idAsk, @required bool correct})
       : super(id: id, name: name, idAsk: idAsk, correct: correct);
 
   factory AnswerModel.fromJson(json) {

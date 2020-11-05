@@ -6,8 +6,7 @@ class AskAnswerEntity extends Equatable {
   final String name;
   final List<AnswerEntity> answers;
 
-  AskAnswerEntity(
-      {@required this.id, @required this.name, @required this.answers});
+  AskAnswerEntity({this.id, @required this.name, @required this.answers});
 
   @override
   List<Object> get props => [
@@ -24,10 +23,7 @@ class AnswerEntity extends Equatable {
   final bool correct;
 
   AnswerEntity(
-      {@required this.id,
-      @required this.name,
-      @required this.idAsk,
-      @required this.correct});
+      {this.id, @required this.name, this.idAsk, @required this.correct});
 
   @override
   List<Object> get props => [this.id, this.name, this.idAsk, this.correct];
