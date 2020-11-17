@@ -12,41 +12,52 @@ class FormPage extends StatefulWidget {
 
 class _FormPageState extends State<FormPage> {
   int _radioValue = 1;
-  //AskController askController = sl<AskController>();
+  AskController askController = Get.find<AskController>();
+  Size size = MediaQuery.of(Get.context).size;
   @override
   Widget build(BuildContext context) {
-    //askController.getAsks();
     return Scaffold(
       appBar: AppBar(),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            _toTheNextQuestion(context);
+            askController.nextPage(_radioValue);
+            // _toTheNextQuestion(context);
           },
           child: Icon(Icons.arrow_right)),
       body: SafeArea(
           child: Container(
         child: GetBuilder<AskController>(
-            init: sl<AskController>(),
-            //initState: (_) => askController.getAsks(),
+            initState: (_) => askController.getAsks(),
+            init: askController,
+            id: 'asks',
             builder: (_controller) {
+              if (_controller.loading) {
+                return Center(child: CircularProgressIndicator());
+              }
               return Column(
                 children: [
                   SizedBox(
                     height: 60,
                   ),
-                  Text('Esta es la pregunta que vamos a usar'),
+                  Container(
+                    width: size.width * 0.7,
+                    child: Text(
+                      _controller.currentItem.name,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 22),
+                    ),
+                  ),
                   SizedBox(
                     height: 50,
                   ),
                   Container(
                       padding: EdgeInsets.symmetric(horizontal: 15),
                       child: Column(
-                        children: [
-                          Row(
+                        children: _controller.currentItem.answers.map((e) {
+                          return Row(
                             children: [
-                              Text('value 1'),
                               Radio(
-                                value: 1,
+                                value: _controller.currentItem.answers.indexOf(e),
                                 groupValue: _radioValue,
                                 onChanged: (int value) {
                                   setState(() {
@@ -54,25 +65,16 @@ class _FormPageState extends State<FormPage> {
                                   });
                                   print(value);
                                 },
-                              )
+                              ),
+                              Flexible(
+                                child: Text(
+                                  e.name,
+                                  textAlign: TextAlign.left,
+                                ),
+                              ),
                             ],
-                          ),
-                          Row(
-                            children: [
-                              Text('value 2'),
-                              Radio(
-                                value: 2,
-                                groupValue: _radioValue,
-                                onChanged: (int value) {
-                                  setState(() {
-                                    _radioValue = value;
-                                  });
-                                  print(value);
-                                },
-                              )
-                            ],
-                          )
-                        ],
+                          );
+                        }).toList(),
                       )),
                 ],
               );
@@ -82,9 +84,9 @@ class _FormPageState extends State<FormPage> {
   }
 
   _toTheNextQuestion(context) async {
-    String index = Get.arguments;
-    int nextIndex = int.parse(index) + 1;
-    Navigator.pushReplacementNamed(context, FormPage.routeName,
-        arguments: nextIndex.toString());
+    Navigator.pushReplacementNamed(
+      context,
+      FormPage.routeName,
+    );
   }
 }

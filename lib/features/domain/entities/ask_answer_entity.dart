@@ -14,6 +14,9 @@ class AskAnswerEntity extends Equatable {
         this.name,
         this.answers,
       ];
+
+  @override
+  bool get stringify => true;
 }
 
 class AnswerEntity extends Equatable {
@@ -22,9 +25,9 @@ class AnswerEntity extends Equatable {
   final int idAsk;
   final bool correct;
 
-  AnswerEntity(
-      {this.id, @required this.name, this.idAsk, @required this.correct});
+  AnswerEntity({this.id, @required this.name, this.idAsk, @required this.correct});
 
-  @override
   List<Object> get props => [this.id, this.name, this.idAsk, this.correct];
+  @override
+  bool get stringify => true;
 }

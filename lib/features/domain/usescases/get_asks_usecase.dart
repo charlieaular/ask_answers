@@ -1,6 +1,6 @@
 import 'package:ask_answers/core/errors/failures.dart';
 import 'package:ask_answers/core/usecases/usecase.dart';
-import 'package:ask_answers/features/domain/entities/ask_answer_model.dart';
+import 'package:ask_answers/features/domain/entities/ask_answer_entity.dart';
 import 'package:ask_answers/features/domain/repositories/ask_repository.dart';
 import 'package:dartz/dartz.dart';
 
