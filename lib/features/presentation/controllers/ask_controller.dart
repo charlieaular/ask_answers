@@ -39,22 +39,34 @@ class AskController extends GetxController {
   }
 
   nextPage(int answerIndex) {
-    bool current = currentItem.answers[answerIndex].correct;
-    if (!current) {
-      AnswerEntity correct = currentItem.answers.firstWhere((el) => el.correct);
+    if (answerIndex == null) {
       Get.defaultDialog(
-          title: 'Respuesta equivocada',
-          content: Text('La respuesta correcta es: \n${correct.name}'),
+          title: 'Campo Obligatorio',
+          content: Text('Seleccione una respuesta para continuar'),
           textConfirm: 'Esta bien',
           confirmTextColor: Colors.white,
           onConfirm: () {
             Get.back();
-            list.removeAt(currentIndex);
-            randomIndex();
           });
     } else {
-      list.removeAt(currentIndex);
-      randomIndex();
+      bool current = currentItem.answers[answerIndex].correct;
+      if (!current) {
+        AnswerEntity correct =
+            currentItem.answers.firstWhere((el) => el.correct);
+        Get.defaultDialog(
+            title: 'Respuesta equivocada',
+            content: Text('La respuesta correcta es: \n${correct.name}'),
+            textConfirm: 'Esta bien',
+            confirmTextColor: Colors.white,
+            onConfirm: () {
+              Get.back();
+              list.removeAt(currentIndex);
+              randomIndex();
+            });
+      } else {
+        list.removeAt(currentIndex);
+        randomIndex();
+      }
     }
   }
 

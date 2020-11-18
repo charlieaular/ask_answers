@@ -11,7 +11,7 @@ class FormPage extends StatefulWidget {
 }
 
 class _FormPageState extends State<FormPage> {
-  int _radioValue = 1;
+  int _radioValue;
   AskController askController = Get.find<AskController>();
   Size size = MediaQuery.of(Get.context).size;
   @override
@@ -21,9 +21,10 @@ class _FormPageState extends State<FormPage> {
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             askController.nextPage(_radioValue);
+            _radioValue = null;
             // _toTheNextQuestion(context);
           },
-          child: Icon(Icons.arrow_right)),
+          child: Icon(Icons.chevron_right)),
       body: SafeArea(
           child: Container(
         child: GetBuilder<AskController>(
@@ -40,42 +41,47 @@ class _FormPageState extends State<FormPage> {
                     height: 60,
                   ),
                   Container(
-                    width: size.width * 0.7,
+                    width: size.width * 0.9,
                     child: Text(
                       _controller.currentItem.name,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 22),
+                      textAlign: TextAlign.justify,
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                   ),
                   SizedBox(
                     height: 50,
                   ),
                   Container(
-                      padding: EdgeInsets.symmetric(horizontal: 15),
                       child: Column(
-                        children: _controller.currentItem.answers.map((e) {
-                          return Row(
-                            children: [
-                              Radio(
-                                value: _controller.currentItem.answers.indexOf(e),
-                                groupValue: _radioValue,
-                                onChanged: (int value) {
-                                  setState(() {
-                                    _radioValue = value;
-                                  });
-                                  print(value);
-                                },
+                    children: _controller.currentItem.answers.map((e) {
+                      return Padding(
+                        padding: const EdgeInsets.only(top: 15, right: 15),
+                        child: Row(
+                          children: [
+                            Radio(
+                              value: _controller.currentItem.answers.indexOf(e),
+                              groupValue: _radioValue,
+                              onChanged: (int value) {
+                                setState(() {
+                                  _radioValue = value;
+                                });
+                                print(value);
+                              },
+                            ),
+                            Flexible(
+                              child: Text(
+                                e.name,
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                    fontSize: 19, fontStyle: FontStyle.italic),
                               ),
-                              Flexible(
-                                child: Text(
-                                  e.name,
-                                  textAlign: TextAlign.left,
-                                ),
-                              ),
-                            ],
-                          );
-                        }).toList(),
-                      )),
+                            ),
+                          ],
+                        ),
+                      );
+                    }).toList(),
+                  )),
                 ],
               );
             }),
