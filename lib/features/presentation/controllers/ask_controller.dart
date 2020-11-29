@@ -51,21 +51,35 @@ class AskController extends GetxController {
     } else {
       bool current = currentItem.answers[answerIndex].correct;
       if (!current) {
-        AnswerEntity correct =
-            currentItem.answers.firstWhere((el) => el.correct);
         Get.defaultDialog(
-            title: 'Respuesta equivocada',
-            content: Text('La respuesta correcta es: \n${correct.name}'),
-            textConfirm: 'Esta bien',
+            title: 'Respuesta Incorrecta',
+            content: Icon(
+              Icons.cancel_rounded,
+              color: Colors.red,
+              size: 150.0,
+            ),
+            textConfirm: 'OK!',
+            confirmTextColor: Colors.white,
+            onConfirm: () {
+              Get.back();
+              // list.removeAt(currentIndex);
+              // randomIndex();
+            });
+      } else {
+        Get.defaultDialog(
+            title: 'Respuesta Correcta',
+            content: Icon(
+              Icons.check_circle,
+              color: Colors.green,
+              size: 150.0,
+            ),
+            textConfirm: 'OK!',
             confirmTextColor: Colors.white,
             onConfirm: () {
               Get.back();
               list.removeAt(currentIndex);
               randomIndex();
             });
-      } else {
-        list.removeAt(currentIndex);
-        randomIndex();
       }
     }
   }
