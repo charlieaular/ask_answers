@@ -51,36 +51,30 @@ class _FormPageState extends State<FormPage> {
                       child: Column(
                     children: _controller.currentItem.answers.map((e) {
                       return Padding(
-                        padding: const EdgeInsets.only(top: 15, right: 15),
-                        child: InkWell(
-                          onTap: (){
-                            setState(() {
-                              _radioValue = _controller.currentItem.answers.indexOf(e);
-                            });
-                          },
-                        child: Row(
-                          children: [
-                            Radio(
-                              value: _controller.currentItem.answers.indexOf(e),
-                              groupValue: _radioValue,
-                              onChanged: (int value) {
-                                setState(() {
-                                  _radioValue = value;
-                                });
-                              },
+                          padding: const EdgeInsets.only(top: 15, right: 15),
+                          child: InkWell(
+                            onTap: () {
+                              setState(() {
+                                _radioValue = _controller.currentItem.answers.indexOf(e);
+                              });
+                            },
+                            child: Row(
+                              children: [
+                                Radio(
+                                  value: _controller.currentItem.answers.indexOf(e),
+                                  groupValue: _radioValue,
+                                  onChanged: (int value) {},
+                                ),
+                                Flexible(
+                                  child: Text(
+                                    e.name,
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(fontSize: 19, fontStyle: FontStyle.italic, color: Colors.white),
+                                  ),
+                                ),
+                              ],
                             ),
-                            Flexible(
-                              child: Text(
-                                e.name,
-                                textAlign: TextAlign.justify,
-                                style: TextStyle(fontSize: 19, fontStyle: FontStyle.italic, color: Colors.white),
-                              ),
-                            ),
-                          ],
-                        ),  
-                        )
-                        
-                      );
+                          ));
                     }).toList(),
                   )),
                 ],

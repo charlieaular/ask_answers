@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            DrawerHeader(child: Container(), decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/app_icon.jpg'), fit: BoxFit.cover))),
+            DrawerHeader(child: Container(), decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/app_icon2.png'), fit: BoxFit.cover))),
             ListTile(
               title: Text(
                 'Información',
