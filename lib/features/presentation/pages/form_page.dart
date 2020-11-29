@@ -3,8 +3,6 @@ import 'package:ask_answers/features/presentation/controllers/ask_controller.dar
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../injection_container.dart';
-
 class FormPage extends StatefulWidget {
   static const String routeName = "form.page";
   @override
@@ -54,6 +52,12 @@ class _FormPageState extends State<FormPage> {
                     children: _controller.currentItem.answers.map((e) {
                       return Padding(
                         padding: const EdgeInsets.only(top: 15, right: 15),
+                        child: InkWell(
+                          onTap: (){
+                            setState(() {
+                              _radioValue = _controller.currentItem.answers.indexOf(e);
+                            });
+                          },
                         child: Row(
                           children: [
                             Radio(
@@ -73,7 +77,9 @@ class _FormPageState extends State<FormPage> {
                               ),
                             ),
                           ],
-                        ),
+                        ),  
+                        )
+                        
                       );
                     }).toList(),
                   )),
@@ -81,13 +87,6 @@ class _FormPageState extends State<FormPage> {
               );
             }),
       )),
-    );
-  }
-
-  _toTheNextQuestion(context) async {
-    Navigator.pushReplacementNamed(
-      context,
-      FormPage.routeName,
     );
   }
 }
