@@ -1,3 +1,4 @@
+import 'package:ask_answers/features/presentation/appbar_component.dart';
 import 'package:ask_answers/features/presentation/controllers/ask_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,8 +18,9 @@ class _FormPageState extends State<FormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBarComponent(),
       floatingActionButton: FloatingActionButton(
+          backgroundColor: Color(0XFFF50057),
           onPressed: () {
             askController.nextPage(_radioValue);
             _radioValue = null;
@@ -42,12 +44,7 @@ class _FormPageState extends State<FormPage> {
                   ),
                   Container(
                     width: size.width * 0.9,
-                    child: Text(
-                      _controller.currentItem.name,
-                      textAlign: TextAlign.justify,
-                      style:
-                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                    ),
+                    child: Text(_controller.currentItem.name, textAlign: TextAlign.justify, style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white)),
                   ),
                   SizedBox(
                     height: 50,
@@ -66,15 +63,13 @@ class _FormPageState extends State<FormPage> {
                                 setState(() {
                                   _radioValue = value;
                                 });
-                                print(value);
                               },
                             ),
                             Flexible(
                               child: Text(
                                 e.name,
                                 textAlign: TextAlign.justify,
-                                style: TextStyle(
-                                    fontSize: 19, fontStyle: FontStyle.italic),
+                                style: TextStyle(fontSize: 19, fontStyle: FontStyle.italic, color: Colors.white),
                               ),
                             ),
                           ],
