@@ -10,7 +10,6 @@ class FormPage extends StatefulWidget {
 }
 
 class _FormPageState extends State<FormPage> {
-  int _radioValue;
   AskController askController = Get.find<AskController>();
   Size size = MediaQuery.of(Get.context).size;
   @override
@@ -20,8 +19,7 @@ class _FormPageState extends State<FormPage> {
       floatingActionButton: FloatingActionButton(
           backgroundColor: Color(0XFFF50057),
           onPressed: () {
-            askController.nextPage(_radioValue);
-            _radioValue = null;
+            askController.nextPage();
             // _toTheNextQuestion(context);
           },
           child: Icon(Icons.chevron_right)),
@@ -32,6 +30,7 @@ class _FormPageState extends State<FormPage> {
             init: askController,
             id: 'asks',
             builder: (_controller) {
+              print(_controller.getIndex());
               if (_controller.loading) {
                 return Center(child: CircularProgressIndicator());
               }
@@ -42,7 +41,12 @@ class _FormPageState extends State<FormPage> {
                   ),
                   Container(
                     width: size.width * 0.9,
-                    child: Text(_controller.currentItem.name, textAlign: TextAlign.justify, style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white)),
+                    child: Text(_controller.currentItem.name,
+                        textAlign: TextAlign.justify,
+                        style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white)),
                   ),
                   SizedBox(
                     height: 50,
@@ -54,22 +58,24 @@ class _FormPageState extends State<FormPage> {
                           padding: const EdgeInsets.only(top: 15, right: 15),
                           child: InkWell(
                             onTap: () {
-                              setState(() {
-                                _radioValue = _controller.currentItem.answers.indexOf(e);
-                              });
+                              _controller.setRadio(e);
                             },
                             child: Row(
                               children: [
                                 Radio(
-                                  value: _controller.currentItem.answers.indexOf(e),
-                                  groupValue: _radioValue,
+                                  value: _controller.currentItem.answers
+                                      .indexOf(e),
+                                  groupValue: _controller.getIndex(),
                                   onChanged: (int value) {},
                                 ),
                                 Flexible(
                                   child: Text(
                                     e.name,
                                     textAlign: TextAlign.justify,
-                                    style: TextStyle(fontSize: 19, fontStyle: FontStyle.italic, color: Colors.white),
+                                    style: TextStyle(
+                                        fontSize: 19,
+                                        fontStyle: FontStyle.italic,
+                                        color: Colors.white),
                                   ),
                                 ),
                               ],

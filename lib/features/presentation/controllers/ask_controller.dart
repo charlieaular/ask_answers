@@ -19,8 +19,10 @@ class AskController extends GetxController {
 
   List<AskAnswerModel> list = List<AskAnswerModel>();
   bool loading = false;
-
+  AnswerEntity radioValue;
   AskAnswerModel get currentItem => list[currentIndex ?? 0];
+
+  int getIndex() => currentItem.answers.indexOf(radioValue);
 
   int currentIndex;
 
@@ -38,8 +40,8 @@ class AskController extends GetxController {
     update(['asks']);
   }
 
-  nextPage(int answerIndex) {
-    if (answerIndex == null) {
+  nextPage() {
+    if (getIndex() == null || getIndex() < 0) {
       Get.defaultDialog(
           title: 'Campo Obligatorio',
           content: Text('Seleccione una respuesta para continuar'),
@@ -49,7 +51,7 @@ class AskController extends GetxController {
             Get.back();
           });
     } else {
-      bool current = currentItem.answers[answerIndex].correct;
+      bool current = currentItem.answers[getIndex()].correct;
       if (!current) {
         Get.defaultDialog(
             title: 'Respuesta Incorrecta',
@@ -67,6 +69,7 @@ class AskController extends GetxController {
             });
       } else {
         Get.defaultDialog(
+            barrierDismissible: false,
             title: 'Respuesta Correcta',
             content: Icon(
               Icons.check_circle,
@@ -76,6 +79,8 @@ class AskController extends GetxController {
             textConfirm: 'OK!',
             confirmTextColor: Colors.white,
             onConfirm: () {
+              radioValue = null;
+
               Get.back();
               list.removeAt(currentIndex);
               randomIndex();
@@ -88,6 +93,12 @@ class AskController extends GetxController {
     int max = list.length;
     Random rnd = Random();
     currentIndex = rnd.nextInt(max);
+    update(['asks']);
+  }
+
+  void setRadio(AnswerEntity e) {
+    radioValue = e;
+
     update(['asks']);
   }
 }

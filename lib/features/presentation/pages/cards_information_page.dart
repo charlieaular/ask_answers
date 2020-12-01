@@ -1,3 +1,4 @@
+import 'package:ask_answers/features/presentation/pages/form_page.dart';
 import 'package:ask_answers/features/presentation/pages/pdf_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
@@ -46,40 +47,88 @@ class CardsInformationPage extends StatelessWidget {
       appBar: AppBarComponent(
         title: 'Información',
       ),
-      body: Container(
-        padding: EdgeInsets.only(top: 20),
-        child: Column(
-            children: resources
-                .map(
-                  (el) => InkWell(
-                    onTap: () {
-                      Get.to(PdfPage(name: el["name"], pdf: el["pdf"]));
-                    },
-                    child: Card(
-                      color: Color(0XFF9FA8DA),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          ListTile(
-                            leading: ClipRRect(
-                              borderRadius: BorderRadius.circular(40),
-                              child: Container(
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(el["image"])),
+      drawer: Drawer(
+          child: Container(
+        decoration: BoxDecoration(
+            gradient: new LinearGradient(
+                colors: [
+                  const Color(0XFF283593),
+                  const Color(0XFF3F51B5),
+                ],
+                begin: const FractionalOffset(0.0, 0.0),
+                end: const FractionalOffset(1.0, 0.0),
+                stops: [0.0, 1.0],
+                tileMode: TileMode.clamp)),
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+                child: Container(),
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/menulateral.jpeg'),
+                        fit: BoxFit.contain))),
+            ListTile(
+              title: Text(
+                'Información',
+                style: TextStyle(color: Colors.white, fontSize: 18),
+              ),
+              onTap: () {
+                Get.back();
+                Get.toNamed(CardsInformationPage.routeName);
+              },
+            ),
+            ListTile(
+              title: Text('Cuestionario',
+                  style: TextStyle(color: Colors.white, fontSize: 18)),
+              onTap: () {
+                Get.back();
+                Get.toNamed(FormPage.routeName, arguments: '0');
+              },
+            )
+          ],
+        ),
+      )),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.only(top: 20),
+          child: Column(
+              children: resources
+                  .map(
+                    (el) => InkWell(
+                      onTap: () {
+                        Get.to(PdfPage(name: el["name"], pdf: el["pdf"]));
+                      },
+                      child: Container(
+                        height: 100,
+                        child: Card(
+                          color: Color(0XFF9FA8DA),
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 20.0),
+                            child: ListTile(
+                              leading: ClipRRect(
+                                borderRadius: BorderRadius.circular(100),
+                                child: Container(
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(el["image"])),
+                                  ),
                                 ),
                               ),
+                              //leading: Image(image: AssetImage(el["image"])),
+                              title: Text(
+                                el["name"],
+                                style: TextStyle(fontSize: 18),
+                              ),
                             ),
-                            //leading: Image(image: AssetImage(el["image"])),
-                            title: Text(el["name"]),
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
-                )
-                .toList()),
+                  )
+                  .toList()),
+        ),
       ),
     );
   }
