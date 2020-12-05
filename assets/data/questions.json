@@ -120,18 +120,22 @@
             ]
         },
         {
-            "name": "¿Qué vigencia tiene el seguro obligatorio SOAT?:",
+            "name": "¿Cuáles son las señales de tránsito?:",
             "answers": [
                 {
-                    "name": "Un (1) año para todos los vehículos que circulan en las vías Nacionales.",
-                    "correct": true
-                },
-                {
-                    "name": "Dos (2) años para los vehículos de servicio público.",
+                    "name": "Señales emitidas por agentes de tránsito",
                     "correct": false
                 },
                 {
-                    "name": "Tres (3) años para los vehículos de servicio particular.",
+                    "name": "Señales transitorias y semáforos",
+                    "correct": false
+                },
+                {
+                    "name": "Todas las anteriores",
+                    "correct": true
+                },
+                {
+                    "name": "Señales reglamentarias, preventivas, informativas y horizontales",
                     "correct": false
                 }
             ]
@@ -154,18 +158,18 @@
             ]
         },
         {
-            "name": "A la parte de la vía destinada al tránsito de una sola fila de vehículos se le denomina:",
+            "name": "Si un vehículo viaja a 30 km por hora y cuando sólo le quedan 5 mts para ingresar a una intersección el semáforo cambia a amarillo el conductor debe:",
             "answers": [
                 {
-                    "name": "carril",
-                    "correct": true
-                },
-                {
-                    "name": "calzada",
+                    "name": "Detenerse ya que pasarse el semáforo en amarillo es igual que pasarse un semáforo en rojo",
                     "correct": false
                 },
                 {
-                    "name": "carretera",
+                    "name": "Continuar su marcha sin aumentar la velocidad  pues no hay espacio para detenerse",
+                    "correct": true
+                },
+                {
+                    "name": "Acelerar y pasar rápido antes que inicien la marcha los otros vehículos",
                     "correct": false
                 }
             ]
@@ -205,19 +209,23 @@
             ]
         },
         {
-            "name": "La direccional debe emplearse para:",
+            "name": "Si el agente de tránsito es visto en un cruce de vías mostrando la espalda o el frente indica que:",
             "answers": [
                 {
-                    "name": "Anunciar un giro o para cambiar de carril.",
-                    "correct": false
-                },
-                {
-                    "name": "Poner en movimiento un vehículo estacionado.",
-                    "correct": false
-                },
-                {
-                    "name": "Todas las anteriores",
+                    "name": "La vía está cerrada como si hubiese un semáforo en rojo",
                     "correct": true
+                },
+                {
+                    "name": "La vía está abierta como si el semáforo estuviese en verde",
+                    "correct": false
+                },
+		{
+                    "name": "Habrá un cambio de señales como si el semáforo estuviese en amarillo ",
+                    "correct": false
+                },
+                {
+                    "name": "Ninguna de las anteriores",
+                    "correct": false
                 }
             ]
         },
@@ -239,19 +247,19 @@
             ]
         },
         {
-            "name": "Las señales verticales se clasifican en:",
+            "name": "Para cancelar el cincuenta por ciento (50%) del valor de la multa un conductor puede acercarse a pagar dentro de",
             "answers": [
                 {
-                    "name": "Blancas y amarillas.",
-                    "correct": false
-                },
-                {
-                    "name": "Longitudinales y transversales.",
-                    "correct": false
-                },
-                {
-                    "name": "Reglamentarias, informativas y preventivas.",
+                    "name": "Los cinco (5) días siguientes a la orden de comparendo.",
                     "correct": true
+                },
+                {
+                    "name": "Entre el día 6 al día 20",
+                    "correct": false
+                },
+                {
+                    "name": "Después del día 20",
+                    "correct": false
                 }
             ]
         },
@@ -273,40 +281,40 @@
             ]
         },
         {
-            "name": "No se le considera actor vial a:",
+            "name": "Si un conductor puede subsanar una falta en el lugar donde se ha cometido la infracción, podrá evitar:",
             "answers": [
                 {
-                    "name": "El conductor.",
+                    "name": "El comparendo.",
                     "correct": false
                 },
                 {
-                    "name": "El peatón.",
+                    "name": "La multa",
                     "correct": false
                 },
                 {
-                    "name": "El dueño de animales.",
-                    "correct": false
-                },
-                {
-                    "name": "Todos los anteriores son actores viales.",
+                    "name": "La inmovilización del vehículo",
                     "correct": true
+                },
+                {
+                    "name": "Todas las anteriores",
+                    "correct": false
                 }
             ]
         },
         {
-            "name": "No transitar por la derecha de la vía, para conductores de vehículos no automotores tiene una multa de:",
+            "name": "Los factores que intervienen en la conducción son: ",
             "answers": [
                 {
-                    "name": "4 SMLDV.",
+                    "name": "Humano y Vehículo",
+                    "correct": false
+                },
+              	{
+                    "name": "Vía y medio ambiente",
+                    "correct": false
+                },
+                {
+                    "name": "Todas los anteriores",
                     "correct": true
-                },
-                {
-                    "name": "8 SMLDV.",
-                    "correct": false
-                },
-                {
-                    "name": "15 SMLDV.",
-                    "correct": false
                 }
             ]
         },
@@ -366,36 +374,44 @@
             ]
         },
         {
-            "name": "Por la calle van ciclistas a los que va a sobrepasar. ¿Qué espacio lateral, como mínimo, mantiene usted respecto de ellos al hacerlo?:",
+            "name": "Los conductores deben reducir la velocidad a treinta (30) kilómetros por hora en: ",
             "answers": [
                 {
-                    "name": "50 cms pues ellos no necesitan mucho espacio.",
+                    "name": "En las zonas escolares y en zonas residenciales",
                     "correct": false
                 },
                 {
-                    "name": "1.5 mts.",
+                    "name": "Cuando se reduzcan las condiciones de visibilidad",
+                    "correct": false
+                },
+  		 {
+                    "name": "Todas las anteriores",
                     "correct": true
                 },
                 {
-                    "name": "1 mt.",
+                    "name": "En proximidad a una intersección o cruce de vías",
                     "correct": false
                 }
             ]
         },
         {
-            "name": "Qué debería hacer un conductor, para corregir un coletazo de las ruedas traseras:",
+            "name": "¿Qué derechos tiene un conductor cuando es requerido para la prueba de alcoholemia?",
             "answers": [
                 {
-                    "name": "Girar el volante hacia el lado que se desplaza la cola del vehículo.",
+                    "name": "Derecho a una entrevista",
+                    "correct": false
+                },
+                {
+                    "name": "A una boquilla nueva empacada individualmente",
+                    "correct": false
+                },
+	        {
+                    "name": "A ver que el aparato alcohol sensor esté calibrado",
+                    "correct": false
+                },
+                {
+                    "name": "Todas las anteriores",
                     "correct": true
-                },
-                {
-                    "name": "Girar el volante hacia el lado opuesto al coletazo.",
-                    "correct": false
-                },
-                {
-                    "name": "No girar el volante del vehículo.",
-                    "correct": false
                 }
             ]
         },
@@ -468,36 +484,40 @@
             ]
         },
         {
-            "name": "Un joven de 16 años que conduce una cuatrimoto requiere licencia de categoría:",
+            "name": "¿Qué sucede con los descuentos del artículo 136 cuando el comparendo es por embriaguez?",
             "answers": [
                 {
-                    "name": "B1",
+                    "name": "No aplican",
                     "correct": true
                 },
                 {
-                    "name": "A2",
+                    "name": "Si aplican, pero el conductor debe pagar en los primeros cinco días",
+                    "correct": false
+                },
+		{
+                    "name": "Si aplican, siempre y cuando realice las horas de servicios comunitarios",
                     "correct": false
                 },
                 {
-                    "name": "C3",
+                    "name": "B y C son correctas",
                     "correct": false
                 }
             ]
         },
         {
-            "name": "Usted debe usar los espejos para:",
+            "name": "Un conductor que quiere realizar mantenimientos preventivos a su vehículo debe:",
             "answers": [
                 {
-                    "name": "Para realizar un pare.",
+                    "name": "Consultar su mecánico",
                     "correct": false
                 },
                 {
-                    "name": "Para disminuir velocidad.",
-                    "correct": false
-                },
-                {
-                    "name": "Para cambiar carril y adelantar.",
+                    "name": "Consultar la rutina de mantenimiento del manual del propietario",
                     "correct": true
+                },
+                {
+                    "name": "Escuchar cuando el vehículo empiece a generar ruidos fuera de lo común",
+                    "correct": false
                 }
             ]
         },
@@ -536,35 +556,39 @@
             ]
         },
         {
-            "name": "En una vía de dos carriles de doble sentido de circulación, se pueden hacer maniobras de adelantamiento por:",
+            "name": "¿Cuántos son los grados de alcoholemia?",
             "answers": [
                 {
-                    "name": "El carril de la derecha con precaución.",
+                    "name": "3",
                     "correct": false
                 },
                 {
-                    "name": "El carril de la izquierda con precaución.",
+                    "name": "4",
                     "correct": true
                 },
                 {
-                    "name": "No se pueden realizar adelantamientos.",
+                    "name": "5",
                     "correct": false
                 }
             ]
         },
         {
-            "name": "En un automóvil sobre que ruedas actúa el freno de emergencia o de mano:",
+            "name": "Una orden formal de notificación para que el presunto contraventor o implicado se presente ante la autoridad de tránsito es lo que se denomina:",
             "answers": [
                 {
-                    "name": "Sobre las de atrás.",
+                    "name": "Un comparendo",
                     "correct": true
                 },
                 {
-                    "name": "Sobre las delanteras.",
+                    "name": "Una multa ",
+                    "correct": false
+                },
+ 		{
+                    "name": "Un parte",
                     "correct": false
                 },
                 {
-                    "name": "Sobre todas.",
+                    "name": "Una infracción ",
                     "correct": false
                 }
             ]
@@ -638,19 +662,19 @@
             ]
         },
         {
-            "name": "A la persona que viaja con el conductor de un vehículo automotor particular se le denomina:",
+            "name": "Las piezas que conforman el conjunto móvil en un motor son:",
             "answers": [
                 {
-                    "name": "Copiloto.",
-                    "correct": false
-                },
-                {
-                    "name": "Pasajero.",
-                    "correct": false
-                },
-                {
-                    "name": "Acompañante.",
+                    "name": "Biela, cigüeñal y pistón",
                     "correct": true
+                },
+                {
+                    "name": "Bloque, cárter y culata",
+                    "correct": false
+                },
+                {
+                    "name": "Diferencial, transmisión y embrague",
+                    "correct": false
                 }
             ]
         },
@@ -706,19 +730,23 @@
             ]
         },
         {
-            "name": "Cuál es la distancia que debe existir entre los dos vehículos, cuando uno hala al otro por medio de un cable:",
+            "name": "Quien provea combustible con pasajeros a bordo incurre en una infracción que tiene multa de:",
             "answers": [
                 {
-                    "name": "Entre uno y dos metros.",
+                    "name": "15 salarios mínimos diarios legales vigentes",
                     "correct": false
                 },
                 {
-                    "name": "Entre dos y tres metros.",
+                    "name": "30 salarios mínimos diarios legales vigentes",
                     "correct": false
                 },
-                {
-                    "name": "Entre tres y cuatro metros.",
+  	        {
+                    "name": "45 salarios mínimos diarios legales vigentes",
                     "correct": true
+                },
+                {
+                    "name": "100 salarios mínimos diarios legales vigentes",
+                    "correct": false
                 }
             ]
         },
@@ -863,18 +891,22 @@
             ]
         },
         {
-            "name": "Cuál de las siguientes afirmaciones es falsa:",
+            "name": "La gasolina es considerada mercancía peligrosa clase: ",
             "answers": [
                 {
-                    "name": "Un niño menor de 9 años viaja más seguro en la parte delantera del vehículo.",
-                    "correct": true
-                },
-                {
-                    "name": "El Air Bag es un sistema que aumenta la eficiencia que ofrece el cinturón de seguridad.",
+                    "name": "8",
                     "correct": false
                 },
                 {
-                    "name": "El cinturón de seguridad disminuye el riesgo de sufrir lesiones graves en un accidente.",
+                    "name": "5",
+                    "correct": false
+                },
+  		{
+                    "name": "3",
+                    "correct": true
+                },
+                {
+                    "name": "2",
                     "correct": false
                 }
             ]

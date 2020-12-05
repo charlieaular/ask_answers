@@ -30,7 +30,6 @@ class _FormPageState extends State<FormPage> {
             init: askController,
             id: 'asks',
             builder: (_controller) {
-              print(_controller.getIndex());
               if (_controller.loading) {
                 return Center(child: CircularProgressIndicator());
               }
