@@ -17,7 +17,7 @@ class _FormPageState extends State<FormPage> {
     return Scaffold(
       appBar: AppBarComponent(),
       floatingActionButton: FloatingActionButton(
-          backgroundColor: Color(0XFFF50057),
+          backgroundColor: Color(0XFF3F51B5),
           onPressed: () {
             askController.nextPage();
             // _toTheNextQuestion(context);

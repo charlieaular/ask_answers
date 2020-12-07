@@ -14,7 +14,7 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
               overflow: TextOverflow.ellipsis,
             )
           : null,
-      backgroundColor: Color(0XFF283593),
+      backgroundColor: Color(0XFFFBC02D),
     );
   }
 

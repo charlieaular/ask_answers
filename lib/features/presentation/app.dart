@@ -11,11 +11,16 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(sl<AskController>());
     return GetMaterialApp(
-      theme: ThemeData(scaffoldBackgroundColor: Color(0XFF3F51B5)),
+      theme: ThemeData(scaffoldBackgroundColor: Color(0XFFFFEE58)),
       debugShowCheckedModeBanner: false,
       title: "Ask Answer app",
       initialRoute: CardsInformationPage.routeName,
-      getPages: [GetPage(name: CardsInformationPage.routeName, page: () => CardsInformationPage()), GetPage(name: FormPage.routeName, page: () => FormPage())],
+      getPages: [
+        GetPage(
+            name: CardsInformationPage.routeName,
+            page: () => CardsInformationPage()),
+        GetPage(name: FormPage.routeName, page: () => FormPage())
+      ],
     );
   }
 }

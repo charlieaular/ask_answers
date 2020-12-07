@@ -12,8 +12,10 @@ class SummaryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.to(PdfPage(name: resource["name"], pdf: resource["pdf"])),
+        onPressed: () =>
+            Get.to(PdfPage(name: resource["name"], pdf: resource["pdf"])),
         child: Icon(Icons.picture_as_pdf_rounded),
+        backgroundColor: Color(0XFF3F51B5),
       ),
       appBar: AppBarComponent(
         title: resource['name'],
@@ -27,12 +29,17 @@ class SummaryPage extends StatelessWidget {
             child: Text(
               resource['summary'],
               style: TextStyle(color: Colors.white, fontSize: 26),
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.justify,
             ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
-            children: [RaisedButton(onPressed: () => Get.to(PdfPage(name: resource["name"], pdf: resource["pdf"])), child: Text('Pdf'))],
+            children: [
+              RaisedButton(
+                  onPressed: () => Get.to(
+                      PdfPage(name: resource["name"], pdf: resource["pdf"])),
+                  child: Text('Pdf'))
+            ],
           )
         ],
       ))),
