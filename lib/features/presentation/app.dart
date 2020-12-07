@@ -9,18 +9,13 @@ import '../../injection_container.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Get.put(AskController(useCase: sl()));
+    Get.put(sl<AskController>());
     return GetMaterialApp(
       theme: ThemeData(scaffoldBackgroundColor: Color(0XFF3F51B5)),
       debugShowCheckedModeBanner: false,
       title: "Ask Answer app",
       initialRoute: CardsInformationPage.routeName,
-      getPages: [
-        GetPage(
-            name: CardsInformationPage.routeName,
-            page: () => CardsInformationPage()),
-        GetPage(name: FormPage.routeName, page: () => FormPage())
-      ],
+      getPages: [GetPage(name: CardsInformationPage.routeName, page: () => CardsInformationPage()), GetPage(name: FormPage.routeName, page: () => FormPage())],
     );
   }
 }

@@ -14,7 +14,27 @@ class AskRepositoryImpl extends AskRepository {
     try {
       List<AskAnswerEntity> asks = await askLocalDataSource.getAsks();
       return Right(asks);
-    } on ServerFailure catch (e) {
+    } on CacheFailure catch (e) {
+      return Left(e);
+    }
+  }
+
+  @override
+  Future<Either<Failure, int>> getButtonCounter() async {
+    try {
+      final int counter = await askLocalDataSource.getButtonCounter();
+      return Right(counter);
+    } on CacheFailure catch (e) {
+      return Left(e);
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> upButtonCounter() async {
+    try {
+      final bool upped = await askLocalDataSource.upButtonCounter();
+      return Right(upped);
+    } on CacheFailure catch (e) {
       return Left(e);
     }
   }

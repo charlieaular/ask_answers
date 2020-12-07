@@ -1,6 +1,10 @@
+import 'package:ask_answers/features/domain/entities/resources.dart';
+import 'package:ask_answers/features/presentation/controllers/ask_controller.dart';
 import 'package:ask_answers/features/presentation/pages/form_page.dart';
 import 'package:ask_answers/features/presentation/pages/pdf_page.dart';
+import 'package:ask_answers/features/presentation/pages/summary_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 
 import '../appbar_component.dart';
@@ -10,39 +14,6 @@ class CardsInformationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, dynamic>> resources = [
-      {
-        "name": "Presentación de técnicas de conducción",
-        "image": "assets/images/tecnicas.jpeg",
-        "pdf": "assets/pdfs/TECNICAS_DE_CONDUCCION.pdf"
-      },
-      {
-        "name": "Presentación de ética y resolución de problemas",
-        "image": "assets/images/etica.jpeg",
-        "pdf": "assets/pdfs/ETICA.pdf"
-      },
-      {
-        "name": "Presentación de Marco Legal",
-        "image": "assets/images/marco_legal.jpeg",
-        "pdf": "assets/pdfs/MARCO_LEGAL.pdf"
-      },
-      {
-        "name": "Presentación de adaptación al medio",
-        "image": "assets/images/adaptacion_al_medio.jpeg",
-        "pdf": "assets/pdfs/ADAPTACION_AL_MEDIO.pdf"
-      },
-      {
-        "name": "Presentación de mecánica",
-        "image": "assets/images/mecanica.jpeg",
-        "pdf": "assets/pdfs/MECANICA_BASICA.pdf"
-      },
-      {
-        "name": "Presentación de Anexos",
-        "image": "assets/images/anexos.jpeg",
-        "pdf": "assets/pdfs/ANEXOS.pdf"
-      },
-    ];
-
     return Scaffold(
       appBar: AppBarComponent(
         title: 'Información',
@@ -62,12 +33,7 @@ class CardsInformationPage extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            DrawerHeader(
-                child: Container(),
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/menulateral.jpeg'),
-                        fit: BoxFit.contain))),
+            DrawerHeader(child: Container(), decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/menulateral.jpeg'), fit: BoxFit.contain))),
             ListTile(
               title: Text(
                 'Información',
@@ -78,14 +44,23 @@ class CardsInformationPage extends StatelessWidget {
                 Get.toNamed(CardsInformationPage.routeName);
               },
             ),
-            ListTile(
-              title: Text('Cuestionario',
-                  style: TextStyle(color: Colors.white, fontSize: 18)),
-              onTap: () {
-                Get.back();
-                Get.toNamed(FormPage.routeName, arguments: '0');
-              },
-            )
+            GetBuilder<AskController>(
+                id: 'buttonCounter',
+                init: Get.find<AskController>(),
+                initState: (_) async => await Get.find<AskController>().getButtonCounter(),
+                builder: (_controller) {
+                  if (!_controller.buttonCounter.isNull && _controller.buttonCounter >= 2) {
+                    return SizedBox();
+                  }
+                  return ListTile(
+                    title: Text('Cuestionario', style: TextStyle(color: Colors.white, fontSize: 18)),
+                    onTap: () {
+                      Get.back();
+                      _controller.upButtonCounter();
+                      Get.toNamed(FormPage.routeName, arguments: '0');
+                    },
+                  );
+                })
           ],
         ),
       )),
@@ -97,7 +72,9 @@ class CardsInformationPage extends StatelessWidget {
                   .map(
                     (el) => InkWell(
                       onTap: () {
-                        Get.to(PdfPage(name: el["name"], pdf: el["pdf"]));
+                        Get.to(SummaryPage(
+                          resource: el,
+                        ));
                       },
                       child: Container(
                         height: 100,
@@ -111,8 +88,7 @@ class CardsInformationPage extends StatelessWidget {
                                 child: Container(
                                   width: 50,
                                   decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage(el["image"])),
+                                    image: DecorationImage(image: AssetImage(el["image"])),
                                   ),
                                 ),
                               ),

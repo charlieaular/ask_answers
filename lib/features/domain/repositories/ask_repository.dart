@@ -4,4 +4,6 @@ import 'package:dartz/dartz.dart';
 
 abstract class AskRepository {
   Future<Either<Failure, List<AskAnswerEntity>>> getAsks();
+  Future<Either<Failure, bool>> upButtonCounter();
+  Future<Either<Failure, int>> getButtonCounter();
 }
