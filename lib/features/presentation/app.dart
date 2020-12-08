@@ -11,7 +11,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(sl<AskController>());
     return GetMaterialApp(
-      theme: ThemeData(scaffoldBackgroundColor: Color(0XFFFFEE58)),
+      theme: ThemeData(scaffoldBackgroundColor: Color(0XFFFFEE58)), //fondo
       debugShowCheckedModeBanner: false,
       title: "Ask Answer app",
       initialRoute: CardsInformationPage.routeName,

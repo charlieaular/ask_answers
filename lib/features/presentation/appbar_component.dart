@@ -14,7 +14,7 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
               overflow: TextOverflow.ellipsis,
             )
           : null,
-      backgroundColor: Color(0XFFFBC02D),
+      backgroundColor: Color(0XFFFBC02D), //navbar titulo
     );
   }
 

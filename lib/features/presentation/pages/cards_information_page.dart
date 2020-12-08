@@ -23,6 +23,7 @@ class CardsInformationPage extends StatelessWidget {
         decoration: BoxDecoration(
             gradient: new LinearGradient(
                 colors: [
+                  //menu lateral
                   const Color(0XFFFFEE58),
                   const Color(0XFF3F51B5),
                 ],
@@ -42,7 +43,7 @@ class CardsInformationPage extends StatelessWidget {
             ListTile(
               title: Text(
                 'Información',
-                style: TextStyle(color: Colors.white, fontSize: 18),
+                style: TextStyle(fontSize: 18),
               ),
               onTap: () {
                 Get.back();
@@ -56,12 +57,11 @@ class CardsInformationPage extends StatelessWidget {
                     await Get.find<AskController>().getButtonCounter(),
                 builder: (_controller) {
                   if (!_controller.buttonCounter.isNull &&
-                      _controller.buttonCounter >= 10) {
+                      _controller.buttonCounter >= 3) {
                     return SizedBox();
                   }
                   return ListTile(
-                    title: Text('Cuestionario',
-                        style: TextStyle(color: Colors.white, fontSize: 18)),
+                    title: Text('Cuestionario', style: TextStyle(fontSize: 18)),
                     onTap: () {
                       Get.back();
                       _controller.upButtonCounter();
