@@ -35,9 +35,10 @@ final List<Map<String, dynamic>> resources = [
         "En mecánica básica se ofrece la información necesaria para conocer los componentes de los sistemas  de un vehículo, su funcionamiento, identificación de fallas y mantenimiento preventivo."
   },
   {
-    "name": "Presentación de Anexos",
+    "name": "Presentación de talleres",
     "image": "assets/images/anexos.jpeg",
     "pdf": "assets/pdfs/ANEXOS.pdf",
-    "summary": "En los anexos se ofrece una presentación de las señales de tránsito actualizadas, primeros auxilios mecánicos y el listados de las principales infracciones de tránsito."
+    "summary":
+        "Los talleres son actividades de refuerzo de normas, señales de transito, operación y reparaciones de emergencia."
   },
 ];

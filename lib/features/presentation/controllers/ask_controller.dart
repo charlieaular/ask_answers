@@ -39,6 +39,12 @@ class AskController extends GetxController {
 
   int currentIndex;
   int buttonCounter;
+
+  onInit() {
+    getButtonCounter();
+    super.onInit();
+  }
+
   Future<void> getAsks() async {
     loading = true;
     update(['asks']);

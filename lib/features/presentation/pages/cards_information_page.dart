@@ -23,7 +23,8 @@ class CardsInformationPage extends StatelessWidget {
         decoration: BoxDecoration(
             gradient: new LinearGradient(
                 colors: [
-                  const Color(0XFF283593),
+                  //menu lateral
+                  const Color(0XFFFFEE58),
                   const Color(0XFF3F51B5),
                 ],
                 begin: const FractionalOffset(0.0, 0.0),
@@ -33,11 +34,16 @@ class CardsInformationPage extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            DrawerHeader(child: Container(), decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/menulateral.jpeg'), fit: BoxFit.contain))),
+            DrawerHeader(
+                child: Container(),
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/menulateral.jpeg'),
+                        fit: BoxFit.contain))),
             ListTile(
               title: Text(
                 'Información',
-                style: TextStyle(color: Colors.white, fontSize: 18),
+                style: TextStyle(fontSize: 18),
               ),
               onTap: () {
                 Get.back();
@@ -47,13 +53,15 @@ class CardsInformationPage extends StatelessWidget {
             GetBuilder<AskController>(
                 id: 'buttonCounter',
                 init: Get.find<AskController>(),
-                initState: (_) async => await Get.find<AskController>().getButtonCounter(),
+                initState: (_) async =>
+                    await Get.find<AskController>().getButtonCounter(),
                 builder: (_controller) {
-                  if (!_controller.buttonCounter.isNull && _controller.buttonCounter >= 2) {
+                  if (!_controller.buttonCounter.isNull &&
+                      _controller.buttonCounter >= 3) {
                     return SizedBox();
                   }
                   return ListTile(
-                    title: Text('Cuestionario', style: TextStyle(color: Colors.white, fontSize: 18)),
+                    title: Text('Cuestionario', style: TextStyle(fontSize: 18)),
                     onTap: () {
                       Get.back();
                       _controller.upButtonCounter();
@@ -79,7 +87,7 @@ class CardsInformationPage extends StatelessWidget {
                       child: Container(
                         height: 100,
                         child: Card(
-                          color: Color(0XFF9FA8DA),
+                          color: Color(0XFFFFF9C4),
                           child: Padding(
                             padding: const EdgeInsets.only(top: 20.0),
                             child: ListTile(
@@ -88,7 +96,8 @@ class CardsInformationPage extends StatelessWidget {
                                 child: Container(
                                   width: 50,
                                   decoration: BoxDecoration(
-                                    image: DecorationImage(image: AssetImage(el["image"])),
+                                    image: DecorationImage(
+                                        image: AssetImage(el["image"])),
                                   ),
                                 ),
                               ),
