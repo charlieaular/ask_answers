@@ -57,7 +57,7 @@ class CardsInformationPage extends StatelessWidget {
                     await Get.find<AskController>().getButtonCounter(),
                 builder: (_controller) {
                   if (!_controller.buttonCounter.isNull &&
-                      _controller.buttonCounter >= 3) {
+                      _controller.buttonCounter >= 1003) {
                     return SizedBox();
                   }
                   return ListTile(
@@ -65,6 +65,7 @@ class CardsInformationPage extends StatelessWidget {
                     onTap: () {
                       Get.back();
                       _controller.upButtonCounter();
+                      _controller.intentos = 0;
                       Get.toNamed(FormPage.routeName, arguments: '0');
                     },
                   );

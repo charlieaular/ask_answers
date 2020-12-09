@@ -35,10 +35,11 @@ class AskController extends GetxController {
 
   int getIndex() => currentItem.answers.indexOf(radioValue);
 
-  bool isLastIndex() => currentIndex == list.length - 1;
+  bool isLastIndex() => list.length == 1;
 
   int currentIndex;
   int buttonCounter;
+  int intentos = 0;
 
   onInit() {
     getButtonCounter();
@@ -86,6 +87,7 @@ class AskController extends GetxController {
               // list.removeAt(currentIndex);
               // randomIndex();
             });
+        intentos++;
       } else {
         Get.defaultDialog(
             barrierDismissible: false,
@@ -99,7 +101,6 @@ class AskController extends GetxController {
             confirmTextColor: Colors.white,
             onConfirm: () {
               radioValue = null;
-              list.removeAt(currentIndex);
 
               Get.back();
               if (isLastIndex()) {
@@ -108,13 +109,26 @@ class AskController extends GetxController {
                     title: 'Enhorabuena',
                     textConfirm: 'Ok',
                     confirmTextColor: Colors.white,
-                    content: Text('Completó todas las preguntas'),
+                    content: Column(
+                      children: [
+                        Icon(
+                          Icons.check_circle_outline,
+                          color: Colors.green,
+                          size: 150.0,
+                        ),
+                        Text(
+                          'Completaste el cuestionario,Te equivocaste $intentos veces',
+                          style: TextStyle(fontSize: 20),
+                        )
+                      ],
+                    ),
                     onConfirm: () {
                       Get.back();
                       Get.offAllNamed(CardsInformationPage.routeName);
                       upButtonCounter();
                     });
               } else {
+                list.removeAt(currentIndex);
                 randomIndex();
               }
             });
@@ -126,6 +140,7 @@ class AskController extends GetxController {
     int max = list.length;
     Random rnd = Random();
     currentIndex = rnd.nextInt(max);
+    print(currentIndex);
     update(['asks']);
   }
 

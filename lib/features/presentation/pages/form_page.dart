@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:ask_answers/features/presentation/appbar_component.dart';
 import 'package:ask_answers/features/presentation/controllers/ask_controller.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +66,9 @@ class _FormPageState extends State<FormPage> {
                                     value: _controller.currentItem.answers
                                         .indexOf(e),
                                     groupValue: _controller.getIndex(),
-                                    onChanged: (int value) {},
+                                    onChanged: (int value) {
+                                      _controller.setRadio(e);
+                                    },
                                   ),
                                   Flexible(
                                     child: Text(
