@@ -1,12 +1,12 @@
 import 'dart:math';
 
-import 'package:ask_answers/core/errors/failures.dart';
 import 'package:ask_answers/core/usecases/usecase.dart';
 import 'package:ask_answers/features/data/models/ask_answer_model.dart';
 import 'package:ask_answers/features/domain/entities/ask_answer_entity.dart';
 import 'package:ask_answers/features/domain/usescases/get_asks_usecase.dart';
 import 'package:ask_answers/features/domain/usescases/get_button_counter_usecase.dart';
 import 'package:ask_answers/features/domain/usescases/up_button_counter_usecase.dart';
+import 'package:ask_answers/features/presentation/pages/cards_information_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -34,6 +34,8 @@ class AskController extends GetxController {
   AskAnswerModel get currentItem => list[currentIndex ?? 0];
 
   int getIndex() => currentItem.answers.indexOf(radioValue);
+
+  bool isLastIndex() => currentIndex == list.length - 1;
 
   int currentIndex;
   int buttonCounter;
@@ -91,10 +93,24 @@ class AskController extends GetxController {
             confirmTextColor: Colors.white,
             onConfirm: () {
               radioValue = null;
+              list.removeAt(currentIndex);
 
               Get.back();
-              list.removeAt(currentIndex);
-              randomIndex();
+              if (isLastIndex()) {
+                Get.defaultDialog(
+                    barrierDismissible: false,
+                    title: 'Enhorabuena',
+                    textConfirm: 'Ok',
+                    confirmTextColor: Colors.white,
+                    content: Text('Completó todas las preguntas'),
+                    onConfirm: () {
+                      Get.back();
+                      Get.offAllNamed(CardsInformationPage.routeName);
+                      upButtonCounter();
+                    });
+              } else {
+                randomIndex();
+              }
             });
       }
     }
