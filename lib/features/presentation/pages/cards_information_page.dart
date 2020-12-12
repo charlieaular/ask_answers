@@ -1,7 +1,6 @@
 import 'package:ask_answers/features/domain/entities/resources.dart';
 import 'package:ask_answers/features/presentation/controllers/ask_controller.dart';
 import 'package:ask_answers/features/presentation/pages/form_page.dart';
-import 'package:ask_answers/features/presentation/pages/pdf_page.dart';
 import 'package:ask_answers/features/presentation/pages/summary_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -57,7 +56,7 @@ class CardsInformationPage extends StatelessWidget {
                     await Get.find<AskController>().getButtonCounter(),
                 builder: (_controller) {
                   if (!_controller.buttonCounter.isNull &&
-                      _controller.buttonCounter >= 1003) {
+                      _controller.buttonCounter >= 3) {
                     return SizedBox();
                   }
                   return ListTile(
